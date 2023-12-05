@@ -44,7 +44,6 @@ h1 {
 }
 
 .game {
-    border: 1px solid red;
     width: 430px;
     height: 430px;
     display: flex;
@@ -64,4 +63,43 @@ h1 {
     align-items: center;
     justify-content: center;
     background-color: #fff;
+    font-size: 3em;
+    transform: rotateY(180deg);
+    transition: 0.25s;
+    border-radius: 10px;
+
+    /* css patterns */
+    --s: 100px; /* control the size */
+    --c1: rgb(121, 19, 216);
+    --c2: rgb(255, 255, 255);
+    
+    --_g:var(--c1) 15%,var(--c2) 0 28%,#0000 0 72%,var(--c2) 0 85%,var(--c1) 0;
+    background:
+        conic-gradient(from 90deg at 2px 2px,#0000 25%,var(--c1) 0) -1px -1px,
+        linear-gradient(-45deg,var(--_g)),linear-gradient(45deg,var(--_g)),
+        conic-gradient(from 90deg at 40% 40%,var(--c1) 25%,var(--c2) 0) 
+        calc(var(--s)/-5) calc(var(--s)/-5);
+    background-size: var(--s) var(--s);
+}
+
+.item::after{
+    content: "";    
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    inset: 0;
+    background-color: #262525;
+    transition: 0.25s;
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+    border-radius: 30px;    
+}
+
+.item .boxOpen{
+    transform: rotateY(0deg);
+}
+
+.boxOpen::after{
+    transform: rotateY(180deg);
 }
